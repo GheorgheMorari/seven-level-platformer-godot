@@ -1,0 +1,125 @@
+[gd_scene load_steps=15 format=3 uid="uid://bqhm3n08t3dps"]
+
+[ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_sgbqs"]
+[ext_resource type="PackedScene" uid="uid://knvwpfky7n08" path="res://objects/view.tscn" id="2_jt7lt"]
+[ext_resource type="PackedScene" uid="uid://byl8ae8dyommm" path="res://objects/world.tscn" id="3_7hd1o"]
+[ext_resource type="PackedScene" uid="uid://rjh4ifidqrfp" path="res://objects/platform_medium.tscn" id="4_t0ews"]
+[ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://objects/platform.tscn" id="5_cv5hy"]
+[ext_resource type="PackedScene" uid="uid://dfpisimsgf5ce" path="res://objects/coin.tscn" id="6_ix5q3"]
+[ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platform_falling.tscn" id="7_oe1bo"]
+[ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platform_grass_large_round.tscn" id="8_8xoa0"]
+[ext_resource type="PackedScene" uid="uid://c110sddlpipog" path="res://objects/hud.tscn" id="9_xmmlt"]
+[ext_resource type="PackedScene" uid="uid://bare88mo5cpin" path="res://objects/player.tscn" id="10_l0ni0"]
+[ext_resource type="PackedScene" uid="uid://c1t40tvaes53r" path="res://objects/flag.tscn" id="11_mpjmh"]
+[ext_resource type="PackedScene" uid="uid://cafgsooqqyy2t" path="res://scenes/level6.tscn" id="12_xip52"]
+
+[sub_resource type="SystemFont" id="SystemFont_bwcrj"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_jynbh"]
+font = SubResource("SystemFont_bwcrj")
+font_size = 30
+shadow_color = Color(0, 0, 0, 0.376471)
+shadow_offset = Vector2(2, 2)
+
+[node name="Main" type="Node3D"]
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_sgbqs")
+
+[node name="View" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_jt7lt")]
+target = NodePath("../Player")
+zoom_maximum = 1
+horizontal_bobbing_speed = 1.0
+horizontal_bobbing_amplitude = 2.0
+vertical_bobbing_speed = 0.0
+vertical_bobbing_amplitude = 0.0
+
+[node name="World" parent="." instance=ExtResource("3_7hd1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.2656, 0, 0)
+
+[node name="platform-medium3" parent="World" instance=ExtResource("4_t0ews")]
+transform = Transform3D(2.11375, 0, 3.39589, 0, 1, 0, -3.39589, 0, 2.11375, 37.2889, -0.530772, 0)
+
+[node name="platform" parent="World" instance=ExtResource("5_cv5hy")]
+transform = Transform3D(-0.166769, 0.198262, -0.965858, 0, 0.979575, 0.201078, 0.985996, 0.0335335, -0.163363, 33.6779, 4.41111, 0)
+
+[node name="coin" parent="World/platform" instance=ExtResource("6_ix5q3")]
+transform = Transform3D(0.996133, 0, -0.0878511, 0, 1, 0, 0.0878511, 0, 0.996133, 0, 0.931153, 0)
+
+[node name="platform2" parent="World" instance=ExtResource("5_cv5hy")]
+transform = Transform3D(0.931692, 0, 0.363251, 0, 1, 0, -0.363251, 0, 0.931692, 39.0509, 6.21093, 1.55078)
+
+[node name="coin" parent="World/platform2" instance=ExtResource("6_ix5q3")]
+transform = Transform3D(0.996133, 0, -0.0878511, 0, 1, 0, 0.0878511, 0, 0.996133, 0, 0.931153, 0)
+
+[node name="platform3" parent="World" instance=ExtResource("5_cv5hy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.7015, 6.21093, -21.1702)
+
+[node name="coin" parent="World/platform3" instance=ExtResource("6_ix5q3")]
+transform = Transform3D(0.996133, 0, -0.0878511, 0, 1, 0, 0.0878511, 0, 0.996133, 0, 0.931153, 0)
+
+[node name="platform-medium4" parent="World" instance=ExtResource("4_t0ews")]
+transform = Transform3D(0.929796, 0, -0.368076, 0, 1, 0, 0.368076, 0, 0.929796, 33.5971, 19.4056, -6.51797)
+
+[node name="coin6" parent="World/platform-medium4" instance=ExtResource("6_ix5q3")]
+transform = Transform3D(0.929796, 0, 0.368076, 0, 1, 0, -0.368076, 0, 0.929796, 0.195611, 0.69686, 0.137956)
+
+[node name="coin7" parent="World/platform-medium4" instance=ExtResource("6_ix5q3")]
+transform = Transform3D(0.929796, 0, 0.368076, 0, 1, 0, -0.368076, 0, 0.929796, 0.195611, 1.69686, 0.137956)
+
+[node name="platform-medium7" parent="World" instance=ExtResource("4_t0ews")]
+transform = Transform3D(0.929796, 0, -0.368076, 0, 1, 0, 0.368076, 0, 0.929796, 18.8246, 19.4056, -6.51797)
+
+[node name="coin6" parent="World/platform-medium7" instance=ExtResource("6_ix5q3")]
+transform = Transform3D(0.929796, 0, 0.368076, 0, 1, 0, -0.368076, 0, 0.929796, 0.195611, 0.69686, 0.137956)
+
+[node name="platform-falling" parent="World" instance=ExtResource("7_oe1bo")]
+transform = Transform3D(-0.277315, 0, -0.960779, 0, 1, 0, 0.960779, 0, -0.277315, 42.4693, 9.30608, -1.34806)
+
+[node name="platform-grass-large-round" parent="World" instance=ExtResource("8_8xoa0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6322, 12.2328, -6.54857)
+
+[node name="coin2" parent="World/platform-grass-large-round" instance=ExtResource("6_ix5q3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.759825, -1.67436)
+
+[node name="coin3" parent="World/platform-grass-large-round" instance=ExtResource("6_ix5q3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.894289, 0.738782, -0.0018158)
+
+[node name="coin5" parent="World/platform-grass-large-round" instance=ExtResource("6_ix5q3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.705548, 0.67059, 1.56949)
+
+[node name="platform-medium5" parent="World" instance=ExtResource("4_t0ews")]
+transform = Transform3D(0.996134, 0, 0.0878512, 0, 1, 0, -0.0878512, 0, 0.996134, 48.1214, 19.0215, -5.92083)
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.422618, -0.694272, 0.582563, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0, 0)
+shadow_enabled = true
+shadow_opacity = 0.75
+
+[node name="HUD" parent="." node_paths=PackedStringArray("world") instance=ExtResource("9_xmmlt")]
+world = NodePath("../World")
+
+[node name="Control hint" type="Label" parent="HUD"]
+offset_left = 64.0
+offset_top = 129.0
+offset_right = 412.0
+offset_bottom = 196.0
+text = "You can jump very high
+You can manuver in the air"
+label_settings = SubResource("LabelSettings_jynbh")
+
+[node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("10_l0ni0")]
+view = NodePath("../View")
+movement_speed = 400
+jump_strength = 15
+static_friction_multiplier = 10.0
+air_movement = true
+
+[node name="Flag" parent="." node_paths=PackedStringArray("player", "world") instance=ExtResource("11_mpjmh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0363, 19.5412, -5.96694)
+player = NodePath("../Player")
+world = NodePath("../World")
+new_scene = ExtResource("12_xip52")
+
+[connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1t40tvaes53r"]
+
+[ext_resource type="Script" path="res://objects/flag.gd" id="1_ouyeb"]
+[ext_resource type="PackedScene" uid="uid://b5mg6q4ryw4qv" path="res://models/flag.glb" id="2_y36to"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tobhn"]
+
+[node name="Flag" type="Node3D"]
+script = ExtResource("1_ouyeb")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.531405, 0)
+shape = SubResource("CapsuleShape3D_tobhn")
+
+[node name="flag_mesh" parent="." instance=ExtResource("2_y36to")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]

@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dsvvcwwc4niia"]
+
+[ext_resource type="Shader" path="res://lava.gdshader" id="1_rtvuq"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i8n3m"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k6spe"]
+width = 2048
+height = 2048
+seamless = true
+noise = SubResource("FastNoiseLite_i8n3m")
+
+[resource]
+shader = ExtResource("1_rtvuq")
+shader_parameter/timeScaleFactor = 0.057
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_k6spe")

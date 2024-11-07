@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://knvwpfky7n08"]
+
+[ext_resource type="Script" path="res://scripts/view.gd" id="1_kebts"]
+
+[node name="View" type="Node3D"]
+transform = Transform3D(0.707107, -0.298836, 0.640856, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640856, 0, 0, 0)
+script = ExtResource("1_kebts")
+horizontal_bobbing_amplitude = 3.0
+vertical_bobbing_amplitude = 0.1
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -3.57628e-07, 0, 0, 1, 0, 1.43051e-06, 10)
+current = true
+fov = 40.0
